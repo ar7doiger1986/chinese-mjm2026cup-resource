@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯主题页 · 稳定入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #f6f8fb;
+            line-height: 1.6;
+            color: #1d2b3a;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: #0b1a2b;
+            color: #e1e8f0;
+            padding: 3.5rem 1.5rem 4.2rem;
+            text-align: center;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 120, 180, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0.5rem auto 0;
+            font-size: 1.15rem;
+            opacity: 0.82;
+            font-weight: 350;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            font-size: 0.85rem;
+            letter-spacing: 0.4px;
+            color: #b0c6da;
+        }
+
+        /* 顶部导航（深色背景） */
+        .navbar {
+            background: #0f202f;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem 3.5rem;
+            list-style: none;
+            border-bottom: 1px solid #2a3f52;
+        }
+
+        .navbar a {
+            color: #cedcec;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 450;
+            padding: 0.2rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+            border-bottom-color: #3b9bd6;
+        }
+
+        .navbar .active-nav {
+            color: #ffffff;
+            border-bottom-color: #3b9bd6;
+        }
+
+        /* 内容容器 */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        /* 核心介绍卡片 */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02), 0 8px 20px rgba(0, 20, 40, 0.06);
+            margin-bottom: 2.8rem;
+        }
+
+        .intro-card h2 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #0b1a2b;
+            letter-spacing: -0.3px;
+        }
+
+        .intro-card p {
+            margin-bottom: 1rem;
+            color: #2c3f52;
+        }
+
+        .intro-card a {
+            color: #1a73b5;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .intro-card a:hover {
+            border-bottom-color: #1a73b5;
+        }
+
+        /* 场景模块：三列网格 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0 1.8rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+            border: 1px solid #e9edf2;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            border-color: #cbd7e4;
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            margin-bottom: 0.6rem;
+            color: #111f2e;
+        }
+
+        .scene-card .icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 0.2rem;
+            color: #3b7fa5;
+        }
+
+        .scene-card p {
+            color: #314a5f;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .scene-card a {
+            color: #1a73b5;
+            text-decoration: none;
+            font-weight: 480;
+        }
+
+        .scene-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* 常见说明 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2.2rem 2.2rem;
+            margin: 2rem 0 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf2;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #0b1a2b;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eef2f7;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: inline-block;
+            color: #1a3c53;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .faq-item span {
+            color: #39536a;
+        }
+
+        .faq-item a {
+            color: #1a73b5;
+            text-decoration: none;
+            font-weight: 450;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* 额外提示块 */
+        .notice-box {
+            background: #f0f4fa;
+            border-left: 4px solid #3b9bd6;
+            padding: 1.2rem 1.8rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0 1rem;
+            font-size: 0.95rem;
+            color: #1f394f;
+        }
+
+        .notice-box a {
+            color: #1a73b5;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .notice-box a:hover {
+            border-bottom-color: #1a73b5;
+        }
+
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .navbar {
+                gap: 1rem 2rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .intro-card {
+                padding: 1.8rem 1.5rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero {
+                padding: 2.8rem 1rem 3.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 1.8rem;
+            color: #6f839a;
+            font-size: 0.85rem;
+            border-top: 1px solid #dfe6ed;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<ul class="navbar">
+    <li><a href="#" class="active-nav">首页</a></li>
+    <li><a href="#">赛事</a></li>
+    <li><a href="#">数据</a></li>
+    <li><a href="#">关于</a></li>
+</ul>
+
+<!-- 深色头图 -->
+<section class="hero">
+    <h1>世界杯 · 赛事信息站</h1>
+    <p>聚合比赛动态、赛程背景与观赛说明，提供清晰稳定的信息入口。</p>
+    <span class="tagline">导向 · 简洁 · 可查</span>
+</section>
+
+<!-- 主要内容 -->
+<div class="container">
+
+    <!-- 核心介绍 -->
+    <div class="intro-card">
+        <h2>关于本站</h2>
+        <p>
+            本页面为 <a href="https://chinese-mjm2026cup.com">世界杯</a> 主题的信息索引页，
+            围绕比赛结构、经典场景和常见疑问进行分层说明。内容经过梳理，不提供实时赔率或未经验证的预测，
+            仅呈现可参考的赛事背景与功能指引。
+        </p>
+        <p>
+            你可以通过下文模块快速了解本届赛事的基本设定、典型观看场景以及平台常规说明。
+            所有指向核心内容的链接均以「世界杯」作为锚点文本，以便保持辨识一致。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-grid">
+        <div class="scene-card">
+            <div class="icon">&#9917;</div>
+            <h3>赛程与分组</h3>
+            <p>涵盖小组赛对阵、淘汰赛阶段及关键日期。数据基于已公布的官方赛历，辅助规划观赛节奏。更多关于分组背景可参考 <a href="https://chinese-mjm2026cup.com">世界杯</a> 的赛程模块。</p>
+        </div>
+        <div class="scene-card">
+            <div class="icon">&#128200;</div>
+            <h3>数据与统计</h3>
+            <p>球队过往战绩、进球分布、控球率趋势等维度汇总。每项指标均注明数据来源，不包含推测性积分。前往 <a href="https://chinese-mjm2026cup.com">世界杯</a> 可查阅完整统计表。</p>
+        </div>
+        <div class="scene-card">
+            <div class="icon">&#127754;</div>
+            <h3>直播与回看</h3>
+            <p>提供官方转播商列表、开球时间换算以及回放平台索引。地域限制等细节以各平台实际说明为准。从 <a href="https://chinese-mjm2026cup.com">世界杯</a> 可获取最新接入方式。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary">
+        <h3>常见说明</h3>
+        <div class="faq-item">
+            <strong>Q:</strong> <span>比赛时间以哪个时区为准？</span>
+            <span> —— 官方统一使用比赛举办地当地时间，页面中会额外标注 UTC 偏移。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q:</strong> <span>数据更新频率如何？</span>
+            <span> —— 每轮比赛结束后 24 小时内同步官方统计，淘汰赛阶段适当加快。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q:</strong> <span>是否包含历史赛事回顾？</span>
+            <span> —— 当前重点为本届，往届数据通过 <a href="https://chinese-mjm2026cup.com">世界杯</a> 的归档页面查阅。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q:</strong> <span>页面图片与视频资源来自何处？</span>
+            <span> —— 主要引用赛事公共素材及授权内容，不嵌入未知来源媒体。</span>
+        </div>
+    </div>
+
+    <!-- 补充说明：稳定访问提示 -->
+    <div class="notice-box">
+        <strong>&#9432; 访问提示：</strong>
+        为保证信息连续性，建议将 <a href="https://chinese-mjm2026cup.com">世界杯</a> 添加至书签。
+        本页作为轻量导航，不设自动刷新，内容版本按赛程阶段更新。
+    </div>
+
+</div>
+
+<footer>
+    信息仅供参考 · 赛事安排以官方公告为准
+</footer>
+
+</body>
+</html>
